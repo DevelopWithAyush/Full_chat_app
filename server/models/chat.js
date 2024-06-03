@@ -1,27 +1,30 @@
-import { Schema,Types,model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
-
-
-
-const userSchema = new Schema({
+const chatSchema = new Schema(
+  {
     name: {
-        type: String,
-        required:true
+      type: String,
+      required: true,
     },
     groupChat: {
-        type: Boolean,
-        default:false
+      type: Boolean,
+      default: false,
     },
     creator: {
-        type: Types.ObjectId,
-        ref: "User"
+      //creator tabhi hoga jab koi group chat hoga tabhi
+      type: Types.ObjectId,
+      ref: "User",
     },
-   
+    members: [
+      {
+        type: Types.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-}, {
-    timestamps:true
-})
-
-
-
-export const User = model.User || model("User",userSchema)
+export const Chat = model.Chat || model("Chat",chatSchema);

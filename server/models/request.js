@@ -3,30 +3,21 @@ import { Schema,model } from "mongoose";
 
 
 
-const userSchema = new Schema({
-    name: {
+const requestSchema = new Schema({
+    status: {
         type: String,
-        required:true
+        default: "pending",
+        enum: ["pending","accepted", "rejected"]
     },
-    userEmail: {
-        type: String,
+     reciver: {
+        type: Types.ObjectId,
+        ref: "User",
         required: true,
-        unique:true
     },
-    password: {
-        type: String,
+    sender: {
+        type: Types.ObjectId,
+        ref: "User",
         required: true,
-        select: false
-    },
-    avatar: {
-        public_id: {
-            type: String,
-            required:true
-        },
-        url: {
-            type: String,
-            required:true
-        }
     }
 },{
     timestamps:true
@@ -34,4 +25,4 @@ const userSchema = new Schema({
 
 
 
-export const User = model.User || model("User",userSchema)
+export const Request = model.Request || model("Request",requestSchema)
