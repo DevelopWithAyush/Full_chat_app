@@ -15,16 +15,17 @@ const messageSchema = new Schema(
         },
       },
     ],
-    chat: {
-      type: Types.ObjectId,
-      ref: "Chat",
-      required: true,
-    },
     sender: {
       type: Types.ObjectId,
       ref: "User",
       required: true,
     },
+    chat: {
+      type: Types.ObjectId,
+      ref: "Chat",
+      required: true,
+    },
+
   },
   {
     timestamps: true,

@@ -28,4 +28,13 @@ const sendToken = (res, user, code, message) => {
 };
 
 
-export { connectDB, sendToken };
+const emitEvent = (req,event,users,data) => {
+  console.log(data,event)
+}
+
+
+
+
+const deleteFilesFromCloudinary =()=>{}
+
+export { connectDB, sendToken, cookieOption, emitEvent, deleteFilesFromCloudinary };

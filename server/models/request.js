@@ -1,15 +1,14 @@
-import { Schema,model } from "mongoose";
+import mongoose from "mongoose";
 
-
-
+const { Schema, model, Types } = mongoose;
 
 const requestSchema = new Schema({
     status: {
         type: String,
         default: "pending",
-        enum: ["pending","accepted", "rejected"]
+        enum: ["pending", "accepted", "rejected"]
     },
-     reciver: {
+    receiver: {
         type: Types.ObjectId,
         ref: "User",
         required: true,
@@ -19,10 +18,8 @@ const requestSchema = new Schema({
         ref: "User",
         required: true,
     }
-},{
-    timestamps:true
-})
+}, {
+    timestamps: true
+});
 
-
-
-export const Request = model.Request || model("Request",requestSchema)
+export const Request = mongoose.models.Request || model("Request", requestSchema);
