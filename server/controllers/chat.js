@@ -214,9 +214,7 @@ const leaveGroup = TryCatch(async (req, res, next) => {
     message: "User has left the group",
   });
 });
-
 // attachments from here
-
 const sentAttachments = TryCatch(async (req, res, next) => {
   const { chatId } = req.body;
   const [chat, me] = await Promise.all([
@@ -268,9 +266,7 @@ const sentAttachments = TryCatch(async (req, res, next) => {
     message,
   });
 });
-
 // from here we are make function to get chatdetails
-
 const getChatDetails = TryCatch(async (req, res, next) => {
   if (req.query.populate === "true") {
     const chat = await Chat.findById(req.params.id)
@@ -305,7 +301,6 @@ const getChatDetails = TryCatch(async (req, res, next) => {
     });
   }
 });
-
 // to update  chat
 const renameGroup = TryCatch(async (req, res, next) => {
   const { name } = req.body;
@@ -327,9 +322,7 @@ const renameGroup = TryCatch(async (req, res, next) => {
     chat,
   });
 });
-
 // to delete the chat
-
 const deleteChat = TryCatch(async (req, res, next) => {
   // Find the chat by its ID
   const chat = await Chat.findById(req.params.id);
@@ -373,7 +366,6 @@ const deleteChat = TryCatch(async (req, res, next) => {
     message: "Chat and related messages deleted successfully.",
   });
 });
-
 const getMessages = TryCatch(async (req, res, next) => {
   const chatId = req.params.id;
 
@@ -400,7 +392,6 @@ const getMessages = TryCatch(async (req, res, next) => {
   });
   
 });
-
 export {
   addMembers, deleteChat, getChatDetails, getMessages, getMyChat,
   getMyGroup, leaveGroup, newGroupChat, removeMembers, renameGroup, sentAttachments
